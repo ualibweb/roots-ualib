@@ -19,11 +19,11 @@ function change_graphic_lib($array) {
 }
 
 //Include our JWT functions.
-if (WP_ENV != "development") {
-    require_once "/srv/web/www/webapps/superGlobalPHP/constants.php";
-    require_once "/srv/web/www/webapps/superGlobalPHP/functions.php";
-    require_once "/srv/web/www/webapps/superGlobalPHP/keys/jwt.php";
-}
+/* if (WP_ENV != "development") { */
+    require_once "/var/www/html/superGlobalPHP/constants.php";
+    require_once "/var/www/html/superGlobalPHP/functions.php";
+    require_once "/var/www/html/superGlobalPHP/keys/jwt.php";
+/* } */
 
 $roots_includes = array(
     'lib/utils.php',           // Utility functions
@@ -50,6 +50,7 @@ unset($file, $filepath);
 
 function createToken($userData){
     $userData = gGetUserData($userData);
+    /* var_dump ( $userData ); */
     return gCreateTokenJWT($userData);
 }
 
@@ -80,8 +81,8 @@ add_action( 'rest_api_init', function() {
                 $userData['name'] = $user["name"];
                 $userData['email'] = $user["email"];
                 $userData['roles'] = $user["roles"];
+                
                 $token = createToken($userData);
-
 
                 return $token;
 

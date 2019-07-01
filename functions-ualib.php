@@ -1,5 +1,5 @@
 <?php
-define( 'WEBAPPS_PATH', '/srv/web/www/webapps/' );
+define( 'WEBAPPS_PATH', 'localhost/' );
 
 function roots_ualib_scripts() {
     //local script added to allow communication between WP API and JS front end apps

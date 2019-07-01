@@ -135,7 +135,7 @@ angular.module("_ualib-home.tpl.html", []).run(["$templateCache", function ($tem
             };
         }]);
 ;angular.module('ualib.alerts', [])
-    .constant('VIEW_ALERTS_URL', '//wwwdev2.lib.ua.edu/alerts/api/today')
+    .constant('VIEW_ALERTS_URL', '//localhost/alerts/api/today')
 
     .factory('viewAlerts', ['$http', 'VIEW_ALERTS_URL', function viewAlerts($http, url){
         return {
@@ -187,7 +187,7 @@ angular.module("_ualib-home.tpl.html", []).run(["$templateCache", function ($tem
         };
     }]);
 ;angular.module('ualib.imageCarousel', ['angular-carousel'])
-    .constant('VIEW_IMAGES_URL', '//wwwdev2.lib.ua.edu/erCarousel/api/slides/active')
+    .constant('VIEW_IMAGES_URL', '//localhost/erCarousel/api/slides/active')
 
     .factory('imageCarouselFactory', ['$http', 'VIEW_IMAGES_URL', function imageCarouselFactory($http, url){
         return {

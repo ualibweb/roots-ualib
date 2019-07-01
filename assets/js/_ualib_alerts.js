@@ -1,5 +1,5 @@
 angular.module('ualib.alerts', [])
-    .constant('VIEW_ALERTS_URL', '//wwwdev2.lib.ua.edu/alerts/api/today')
+    .constant('VIEW_ALERTS_URL', '//localhost/alerts/api/today')
 
     .factory('viewAlerts', ['$http', 'VIEW_ALERTS_URL', function viewAlerts($http, url){
         return {

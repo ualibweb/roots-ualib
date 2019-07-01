@@ -20,7 +20,6 @@ var isDefined = angular.isDefined,
     copy = angular.copy,
     equals = angular.equals;
 
-
 /**
  * @description
  * get an object and return array of values
@@ -6298,7 +6297,7 @@ angular.module('ualib.databases')
             return defaults.concat(transform);
         }
 
-        return $resource('//wwwdev2.lib.ua.edu/databases/api/:db', {db: 'all'}, {
+        return $resource('//localhost/databases/api/:db', {db: 'all'}, {
             get: {
                 cache: true,
                 method: 'GET',
@@ -12731,22 +12730,21 @@ angular.module('manage', [
     'manage.manageERCarousel'
 ])
 
-    .constant('HOURS_MANAGE_URL', 'https://wwwdev2.lib.ua.edu/libhours2/')
-    .constant('USER_GROUPS_URL', 'https://wwwdev2.lib.ua.edu/userGroupsAdmin/')
-    .constant('SITE_FEEDBACK_URL', 'https://wwwdev2.lib.ua.edu/siteSurvey/')
-    .constant('ONE_SEARCH_URL', 'https://wwwdev2.lib.ua.edu/oneSearch/')
-    .constant('STAFF_DIR_URL', 'https://wwwdev2.lib.ua.edu/staffDir/')
-    .constant('DATABASES_URL', 'https://wwwdev2.lib.ua.edu/databases/')
-    .constant('SOFTWARE_URL', 'https://wwwdev2.lib.ua.edu/softwareList/')
-    .constant('FORMS_URL', '//wwwdev2.lib.ua.edu/form/')
-    .constant('NEWS_URL', 'https://wwwdev2.lib.ua.edu/newsApp/')
-    .constant('ALERTS_URL', 'https://wwwdev2.lib.ua.edu/alerts/')
-    .constant('ERRORS_URL', 'https://wwwdev2.lib.ua.edu/errors/')
-    .constant('ERCAROUSEL_URL', 'https://wwwdev2.lib.ua.edu/erCarousel/api/');
+    .constant('HOURS_MANAGE_URL', 'https://localhost/libhours2/')
+    .constant('USER_GROUPS_URL', 'https://localhost/userGroupsAdmin/')
+    .constant('SITE_FEEDBACK_URL', 'https://localhost/siteSurvey/')
+    .constant('ONE_SEARCH_URL', 'https://localhost/oneSearch/')
+    .constant('STAFF_DIR_URL', 'https://localhost/staffDirectory/')
+    .constant('DATABASES_URL', 'https://localhost/databases/')
+    .constant('SOFTWARE_URL', 'https://localhost/software/')
+    .constant('FORMS_URL', '//localhost/forms/')
+    .constant('NEWS_URL', 'https://localhost/news/')
+    .constant('ALERTS_URL', 'https://localhost/alerts/')
+    .constant('ERRORS_URL', 'https://localhost/errors/')
+    .constant('ERCAROUSEL_URL', 'https://localhost/erCarousel/api/');
 angular.module('manage.common', [
     'common.manage'
 ])
-
     .filter('startFrom', [ function() {
         return function(input, start) {
             if (angular.isObject(input)){
@@ -12759,13 +12757,14 @@ angular.module('manage.common', [
     }]);
 
 angular.module('common.manage', [])
-    .constant('API', 'https://wwwdev2.lib.ua.edu/wp-json/wp/v2/')
+    .constant('API', 'https://localhost/wp-json/wp/v2/')
 
     .config(['$httpProvider', function($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptor');
     }])
 
     .factory('AuthInterceptor', ['AuthService', function (AuthService) {
+      
         return {
             // automatically attach Authorization header
             request: function(config) {
@@ -12773,7 +12772,7 @@ angular.module('common.manage', [])
 
                 //interceptor for UALib JWT tokens
                 var token = AuthService.getToken();
-                if(config.url.indexOf("https://wwwdev2.lib.ua.edu/") === 0 && token) {
+                if(config.url.indexOf("https://localhost/") === 0 && token) {
                     config.headers.Authorization = "Bearer " + token;
                 }
 
@@ -12788,7 +12787,7 @@ angular.module('common.manage', [])
 
             // If a token was sent back, save it
             response: function(res) {
-                if(res.config.url.indexOf("https://wwwdev2.lib.ua.edu/") === 0 && angular.isDefined(res.data.token)) {
+                if(res.config.url.indexOf("https://localhost/") === 0 && angular.isDefined(res.data.token)) {
                     AuthService.saveToken(res.data.token);
                 }
                 return res;
@@ -12798,7 +12797,6 @@ angular.module('common.manage', [])
 
     .service('AuthService', ['$window', function($window){
         var self = this;
-
         self.parseJWT = function(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace('-', '+').replace('_', '/');
@@ -13608,6 +13606,8 @@ angular.module('manage.manageERCarousel', ['ngFileUpload'])
         $scope.newSlide.selectedFiles = [];
         $scope.newSlide.picFile = [];
         $scope.updating = true;
+
+      // console.log($scope.userInfo);
 
         $scope.hasAccess = false;
         if (angular.isDefined($scope.userInfo.group)) {
@@ -17265,7 +17265,7 @@ angular.module("videos/videos-list.tpl.html", []).run(["$templateCache", functio
     "                <div class=\"col-md-5\">\n" +
     "                    <div class=\"well\">\n" +
     "                        <p class=\"lead\"> Videos are available through the Music Library</p>\n" +
-    "                        <a href=\"https://wwwdev2.lib.ua.edu/libraries-and-collections/music-library/\" class=\"btn btn-primary\" title=\"Music Library\">Get more info <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
+    "                        <a href=\"https://localhost/libraries-and-collections/music-library/\" class=\"btn btn-primary\" title=\"Music Library\">Get more info <span class=\"fa fa-fw fa-info-circle\"></span></a>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -17437,7 +17437,7 @@ angular.module('musicSearch', ['ualib.musicSearch']);;angular.module('ualib.musi
 
     .factory('videosFactory', ['$resource', function($resource){
 
-        return $resource('//wwwdev2.lib.ua.edu/musicsearch/api/:videos', {videos: 'showall'}, {
+        return $resource('//localhost/musicsearch/api/:videos', {videos: 'showall'}, {
             get: {
                 method: 'GET',
                 cache: true
@@ -18120,7 +18120,7 @@ angular.module("common/engines/staff-directory/staff-directory.tpl.html", []).ru
     "<div class=\"col-md-4\">\n" +
     "    <div class=\"media\">\n" +
     "        <div class=\"media-left\">\n" +
-    "                <img ng-if=\"item.photo\" class=\"media-object\" style=\"width: 128px;\" src='https://wwwdev2.lib.ua.edu/staffDir/staffImages/{{item.photo}}' alt=\"Staff Directory Image of {{item.firstName}} {{item.lastName}}\" />\n" +
+    "                <img ng-if=\"item.photo\" class=\"media-object\" style=\"width: 128px;\" src='https://localhost/staffDir/staffImages/{{item.photo}}' alt=\"Staff Directory Image of {{item.firstName}} {{item.lastName}}\" />\n" +
     "                <img ng-if=\"!item.photo\" class=\"media-object\" style=\"width: 128px;\" src=\"https://www.lib.ua.edu/wp-content/themes/roots-ualib/assets/img/user-profile.png\" alt=\"Staff Directory Image of {{item.firstName}} {{item.lastName}}\" />\n" +
     "        </div>\n" +
     "        <div class=\"media-body\">\n" +
@@ -18261,7 +18261,7 @@ angular.module('oneSearch', [
     'oneSearch.bento'
 ])
     // The URL to the main website
-    .constant('UALIB_DOMAIN', '//wwwdev2.lib.ua.edu/')
+    .constant('UALIB_DOMAIN', '//localhost/')
 
     // Default search parameters
     /**
@@ -18881,7 +18881,7 @@ angular.module('oneSearch.common')
                     }
                     if ($scope.model.length > 2 && !$scope.dataRequested){
 /*
-                        dataFactory.get('//wwwdev2.lib.ua.edu/oneSearch/api/suggest/' + encodeURI(fixedString))
+                        dataFactory.get('//localhost/oneSearch/api/suggest/' + encodeURI(fixedString))
                             .then(function(data) {
                                 $scope.items.suggest = data;
                                 $scope.setCurrent(-1, false);
@@ -18891,11 +18891,11 @@ angular.module('oneSearch.common')
                     }
                     if ($scope.model.length > 2){
                         $timeout(function() {
-                            dataFactory.get('//wwwdev2.lib.ua.edu/oneSearch/api/recommend/' + encodeURI(fixedString))
+                            dataFactory.get('//localhost/oneSearch/api/recommend/' + encodeURI(fixedString))
                                 .then(function(data) {
                                     $scope.items.recommend = data;
                                 });
-                            dataFactory.get('//wwwdev2.lib.ua.edu/staffDir/api/subject/' + encodeURI(fixedString) + '/match/startwith')
+                            dataFactory.get('//localhost/staffDirectory/api/subject/' + encodeURI(fixedString) + '/match/startwith')
                                 .then(function(data) {
                                     $scope.items.subjects = data;
                                 });
@@ -20346,7 +20346,7 @@ angular.module('common.oneSearch', [])
 
 
             var canceller = $q.defer();
-            var url = '//wwwdev2.lib.ua.edu/oneSearch/api/search/' + params['s'] + '/engine/' + params['engine'] + '/limit/' + params['limit'];
+            var url = '//localhost/oneSearch/api/search/' + params['s'] + '/engine/' + params['engine'] + '/limit/' + params['limit'];
 
             var request = $http({
                 method: 'GET',
@@ -20717,7 +20717,7 @@ angular.module('common.oneSearch', [])
                     if (!$location.path() || $location.path().indexOf('/bento') < 0) {
                         var url = '#/bento/' + searchText;
                         switch ($location.host()) {
-                            case 'wwwdev2.lib.ua.edu':
+                            case 'localhost':
                             case 'www.lib.ua.edu':
                                 url = '//' + $location.host() + url;
                                 break;
@@ -20737,7 +20737,7 @@ angular.module('common.oneSearch', [])
         };
 
         $scope.getRecommend = function(val){
-            return $resource('//wwwdev2.lib.ua.edu/oneSearch/api/recommend/:search')
+            return $resource('//localhost/oneSearch/api/recommend/:search')
                 .query({search: val})
                 .$promise.then(function(rec) {
                     //console.log(rec);
@@ -24889,7 +24889,7 @@ angular.module('hours.common', [
 angular.module('common.hours', [])
 
     .factory('hoursFactory', ['$resource', function($resource){
-        return $resource("//wwwdev2.lib.ua.edu/libhours2/api/:view", {}, {
+        return $resource("//localhost/libhours2/api/:view", {}, {
             get: {
                 cache: true
             }
@@ -28365,7 +28365,7 @@ function correctEventTime(apiEventTime) {
          * @returns {Promise} Returns a [promise](https://code.angularjs.org/1.2.29/docs/api/ng/service/$q).
          */
 
-        return $resource('//wwwdev2.lib.ua.edu/newsApp/api/:news', {}, {
+        return $resource('//localhost/news/api/:news', {}, {
             get: {
                 method: 'GET',
                 params: {news: 'archive'},
@@ -28974,7 +28974,7 @@ angular.module("software-list/software-list.tpl.html", []).run(["$templateCache"
 ]);;angular.module('ualib.softwareList')
 
     .factory('softwareFactory', ['$resource', function($resource){
-        return $resource('//wwwdev2.lib.ua.edu/softwareList/api/:software', {software: 'all'}, {
+        return $resource('//localhost/software/api/:software', {software: 'all'}, {
             get: {
                 method: 'GET',
                 cache: true
@@ -29348,7 +29348,7 @@ angular.module('staffdir', ['ualib.staffdir']);
              * @returns {Promise} $resource promise
              */
             directory: function(){
-                return $resource('//wwwdev2.lib.ua.edu/staffDir/api/people', {}, {
+                return $resource('//localhost/staffDirectory/api/people', {}, {
                     get: {
                         cache: true,
                         method: 'GET',
@@ -29451,7 +29451,7 @@ angular.module('staffdir', ['ualib.staffdir']);
              * @returns {Promise} $resource promise
              */
             byEmail: function(){
-                return $resource('//wwwdev2.lib.ua.edu/staffDir/api/people/search/email/:email', {}, {cache: true});
+                return $resource('//localhost/staffDirectory/api/people/search/email/:email', {}, {cache: true});
             },
             /**
              * @ngdoc object
@@ -29479,7 +29479,7 @@ angular.module('staffdir', ['ualib.staffdir']);
              * @returns {Promise} $resource promise
              */
             byName: function(){
-                return $resource('//wwwdev2.lib.ua.edu/staffDir/api/people/search/firstname/:firstname/lastname/:lastname', {}, {cache: true});
+                return $resource('//localhost/staffDirectory/api/people/search/firstname/:firstname/lastname/:lastname', {}, {cache: true});
             },
             /**
              * @ngdoc object
@@ -29506,7 +29506,7 @@ angular.module('staffdir', ['ualib.staffdir']);
              * @returns {Promise} $resource promise
              */
             byId: function(){
-                return $resource('//wwwdev2.lib.ua.edu/staffDir/api/people/search/id/:id', {}, {cache: true});
+                return $resource('//localhost/staffDirectory/api/people/search/id/:id', {}, {cache: true});
             },
             /**
              * @ngdoc object
@@ -29533,7 +29533,7 @@ angular.module('staffdir', ['ualib.staffdir']);
              * @returns {Promise} $resource promise
              */
             profile: function(){
-                return $resource('//wwwdev2.lib.ua.edu/staffDir/api/profile/:login', {}, {cache: true});
+                return $resource('//localhost/staffDirectory/api/profile/:login', {}, {cache: true});
             }
         };
     }]);
