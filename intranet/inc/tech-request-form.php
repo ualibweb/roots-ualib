@@ -14,7 +14,6 @@ if ( ! ( $current_user instanceof WP_User ) ) {
 
 $user_name = $current_user->display_name;
 $user_email = $current_user->user_email;
-var_dump($current_user);
 ?>
           <form   action="/intranet/tech-request-form-result" method="post" id="techRequest" enctype="multipart/form-data">
 <div class="form-group">
