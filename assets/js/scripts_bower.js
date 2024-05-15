@@ -18863,7 +18863,11 @@ angular.module('oneSearch.bento', [])
                             elm.addClass('hidden');
                         }
                         else{
-                            elm.append("<strong>No Results</strong>");
+                            if (b == "articles"){
+                                elm.append("<strong>Your search term may be too broad, please try a more specific term</strong>");
+                            } else {
+                                elm.append("<strong>No Results</strong>");
+                            }
                             elm.addClass('text-muted');
                         }
                     }
@@ -24976,16 +24980,10 @@ angular.module("list/list.tpl.html", []).run(["$templateCache", function($templa
     "        <td>{{lib.hours}}</td>\n" +
     "        <td><span ng-if=\"lib.openFrom !== '-3'\" ng-class=\"lib.status.css\">{{lib.status.text}}</span></td>\n" +
     "      </tr>\n" +
-    "      <tr class=\"hours-list-child\" ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
+    "      <tr class=\"hours-list-child\" ng-repeat-end ng-repeat=\"child in lib.children track by $index\" ng-click=\"selectLib(child)\">\n" +
     "        <td><a ng-href=\"#/hours?library={{child.name}}\">{{child.name}}</a></td>\n" +
     "        <td>{{child.hours}}</td>\n" +
     "        <td><span ng-class=\"child.status.css\">{{child.status.text}}</span></td>\n" +
-    "      </tr>\n" +
-    "      <!-- Williams Collection data is removed from the Database; therefore the data is hardcoded !-->\n" +
-    "      <tr ng-repeat-end ng-if=\"lib.name == 'Gorgas Library'\" class=\"hours-list-child\">\n" +
-    "        <td><a ng-href=\"https://www.lib.ua.edu/collections/williams/\">Williams Collection</a></td>\n" +
-    "        <td class=\"ng-binding\">By appointment</td>\n" +
-    "        <td>&nbsp;</td>\n" +
     "      </tr>\n" +
     "    </tbody>\n" +
     "  </table>\n" +
@@ -25194,7 +25192,7 @@ angular
           contact: {
             phone: [
               {
-                number: "(205) 348-1080",
+                number: "(205) 348-1086",
               },
             ],
 
