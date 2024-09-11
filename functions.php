@@ -100,3 +100,21 @@ add_action( 'rest_api_init', function() {
 } );
 
 
+function add_deferred_script() {
+    wp_enqueue_script(
+        'delayed-widget-script',
+        get_template_directory_uri() . './assets/js/load.js',
+        array(), // No dependencies
+        null, // No version number
+        true // Load in footer
+    );
+    add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+}
+
+function add_defer_attribute($tag, $handle) {
+    if ('delayed-widget-script' !== $handle) {
+        return $tag;
+    }
+    return str_replace(' src', ' defer="defer" src', $tag);
+}
+add_action('wp_enqueue_scripts', 'add_deferred_script');
