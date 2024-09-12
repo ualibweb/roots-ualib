@@ -125,9 +125,9 @@
                                             </a>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
-                                            <a class="service-card" href="/research-help/e-resources/">
+                                            <a class="service-card" href="https://publications.ebsco.com/?authtype=ip,sso&custId=s4594951&groupId=main&profileId=pfui">
                                                 <span class="fa fa-bolt" aria-hidden="true"></span>
-                                                <h4>E-Journals</h4>
+                                                <h4>Publication Finder</h4>
                                                 <p>Explore the libraries electronic resource collections and more </p>
                                             </a>
                                         </div>
@@ -176,7 +176,7 @@
                                           </a>
                                       </div>
                                       <div class="col-xs-12 col-sm-6 col-md-3">
-                                          <a class="service-card" href="https://guides.lib.ua.edu/Data/ResearchDataServices/">
+                                          <a class="service-card" href="https://guides.lib.ua.edu/rds">
                                               <span class="fa fa-archive" aria-hidden="true"></span>
                                               <h4>Research Data Services</h4>
                                               <p>Research data management and curation resources available at the University of Alabama</p>
@@ -206,17 +206,19 @@
                         </ul>
                     </li>
                     <li class="dropdown yamm-fw">
-                        <a href="#" class="dropdown-toggle">Using the Libraries</a>
+                        <a href="#" class="dropdown-toggle">Using the University Libraries</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6 col-md-3">
-                                            <a class="service-card" href="/using-the-library/information-for-students/">
-                                                <span class="fa fa-pencil" aria-hidden="true"></span>
+                                            <div class="service-list">
+                                                <span class="fa fa-lightbulb-o" aria-hidden="true"></span>
                                                 <h4>Information for Students</h4>
-                                                <p>Learn more about the libraries, materials, and our services</p>
-                                            </a>
+                                                <ul><li><a href="/using-the-library/information-for-students/">Undergraduate Resources</a></li>
+                                                    <li><a href="https://guides.lib.ua.edu/graduatestudents">Graduate Resources</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <a class="service-card" href="/using-the-library/information-for-faculty/">
@@ -230,7 +232,6 @@
                                                 <span class="fa fa-lightbulb-o" aria-hidden="true"></span>
                                                 <h4>Find a Place to Study</h4>
                                                 <ul>
-                                                    <li><a href="/using-the-library/presentation-practice-rooms/">Presentation Practice Rooms</a></li>
                                                     <li><a href="https://ua.libcal.com/allspaces">Team Workrooms</a></li>
                                                     <li><a href="/using-the-library/find-a-place-to-study/">Spaces by Library</a></li>
                                                 </ul>
@@ -305,6 +306,13 @@
                                                 <p>Information on research, writing, and key resources for distant learners</p>
                                             </a>
                                         </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <a class="service-card" href="https://www.lib.ua.edu/using-the-library/library-materials-location-by-floor/">
+                                                <span class="fa fa-map-marker" aria-hidden="true"></span>
+                                                <h4>Library Materials Location by Floor</h4>
+                                                <p>Easily locate items by floor using our materials maps</p>
+                                            </a>
+                                        </div> 
                                     </div>
                                 </div>
                             </li>
@@ -320,7 +328,7 @@
                                             <a class="service-card" href="/#/hours">
                                                 <span class="fa fa-clock-o" aria-hidden="true"></span>
                                                 <h4>Hours</h4>
-                                                <p>Library hours and locations</p>
+                                                <p>University Library hours and locations</p>
                                             </a>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -330,6 +338,7 @@
                                                 <ul>
                                                     <li><a href="/#/staffdir">UA Libraries Faculty and Staff</a></li>
                                                     <li><a href="/about/about-the-libraries/faculty-committees/">UA Libraries Committees</a></li>
+                                                    <li><a href="https://www.lib.ua.edu/about/libraries-organizational-chart/">UA Libraries Organizational Chart</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -359,11 +368,11 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <div class="service-list">
                                                 <span class="fa fa-university" aria-hidden="true"></span>
-                                                <h4>Libraries Locations</h4>
+                                                <h4>University Libraries Locations</h4>
                                                 <ul>
                                                     <li><a href="/libraries/gorgas/">Gorgas Library</a></li>
                                                     <li><a href="/libraries/bruno/">Bruno Business Library</a></li>
-                                                    <li><a href="/libraries/mclure/">McLure Education Library</a></li>
+                                                    <!-- ><li><a href="/libraries/mclure/">McLure Education Library</a></li> -->
                                                     <li><a href="/libraries/rodgers/">Rodgers Library for Science & Engineering</a></li>
                                                     <li><a href="/libraries/music/">Music Library</a></li>
                                                     <li><a href="/about/library-archival-facility/">Libraries Archival Facility</a></li>
@@ -385,7 +394,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
-                                            <a class="service-card" href="/about/employment/">
+                                            <a class="service-card" href="https://careers.ua.edu/jobs/search/Library">
                                                 <span class="fa fa-building" aria-hidden="true"></span>
                                                 <h4>Employment</h4>
                                                 <p>Explore job opportunities at UA Libraries</p>

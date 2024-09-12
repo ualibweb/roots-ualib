@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-xs-6">
                             <a href="http://www.hathitrust.org/" target="_hatti" class="text-right">
-                                <img src="//www.lib.ua.edu/wp-content/themes/roots-ualib/assets/img/HT-logo.png" class="img-responsive" alt="Hathi Trust Logo" />
+                            <img src="//www.lib.ua.edu/wp-content/uploads/SM-300X78-hathitrust-logo-horizontal.png" class="" alt="Hathi Trust Logo">
                             </a>
                         </div>
                     </div>
